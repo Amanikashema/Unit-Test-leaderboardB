@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
 from website import db
-from website.models import Note,Work,User,Team
+from website.models import Note, Work, User, Team
 
 
 class ModelsTests(unittest.TestCase):
@@ -20,22 +20,20 @@ class ModelsTests(unittest.TestCase):
         self.assertEqual(work_info.user_id, 1)
         self.assertEqual(work_info.points,10)
 
-
     def tests_user(self):
-        user_info = User(id=0,email="amanikashema@gmail.com",password="kash123",first_name="Amani",notes="Code",team_id=1,team_leader="Zayaan",work="Tester",points=13)
-        self.assertEqual(user_info.id,0)
-        self.assertEqual(user_info.email,"amanikashema@gmail.com")
+        user_info = User(email='amanikashema@gmail.com', password="kash123", first_name="Amani",
+                         team_id=1, team_leader=False, points=13)
+        self.assertEqual(user_info.email, "amanikashema@gmail.com")
         self.assertEqual(user_info.password, "kash123")
         self.assertEqual(user_info.first_name, "Amani")
-        self.assertEqual(user_info.notes, "Code")
-        self.assertEqual(user_info.team_id,1)
-        self.assertEqual(user_info.team_leader, "Zayaan")
-        self.assertEqual(user_info.work, "tester")
+        #self.assertEqual(user_info.notes, ["Code"])
+        self.assertEqual(user_info.team_id, 1)
+        self.assertEqual(user_info.team_leader, False)
+        #self.assertEqual(user_info.work, ["Tester"])
         self.assertEqual(user_info.points, 13)
 
     def tests_team(self):
-        team_info = Team(id=0,name="Amani")
-        self.assertEqual(team_info.id,0)
+        team_info = Team(name="Amani")
         self.assertEqual(team_info.name,"Amani")
 
 
