@@ -1,6 +1,7 @@
 
 from unittest import TestCase
 from website import db
+from main import app
 
 
 class BaseTest(TestCase):
