@@ -1,4 +1,4 @@
-
+from website.models import User
 from unittest import TestCase
 from website import db
 from main import app
@@ -20,3 +20,4 @@ class BaseTest(TestCase):
         with app.app_context():
             db.session.remove()
             db.drop_all()
+

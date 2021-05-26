@@ -11,8 +11,11 @@ class TestSignUp(BaseTest):
             self.assertIn('/sign-up',request.url)
 
             self.assertIn(b'<title>\nSign Up\n</title',response.data)
+
             self.assertEqual(response.status_code,200)
+
             self.assertEqual(current_user.get_id(),AnonymousUserMixin.get_id(self))
+
 
     def test_sign_up_post_short_email(self):
         with self.app:
@@ -28,6 +31,7 @@ class TestSignUp(BaseTest):
             response = self.app.post('/sign-up',data=dict(email='email@gmail.com',firstName='h',password='pass1234', follow_redirects=True))
             # assert that flash message appears
             self.assertIn(b'First name must be greater than 1 character', response.data)
+            print(response.data)
             # assert status code
             self.assertEqual(response.status_code, 200)  # it does return the page, just with flash error message
             # assert user is not created

@@ -11,7 +11,6 @@ def log_in():
     if request.method == 'POST':
         email = request.form.get('email')
         passwordEntered = request.form.get('password')
-
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, passwordEntered):
@@ -31,7 +30,6 @@ def log_in():
 def log_out():
     logout_user()
     return redirect(url_for('auth.log_in'))
-
 
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
